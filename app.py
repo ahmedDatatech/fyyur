@@ -190,7 +190,7 @@ def show_venue(venue_id):
   row = {}
   venue_details = Venue.query.filter_by(id = venue_id).first()
 
-  upcoming_shows = db.session.query(Show.start_time,Show.artist_id,Show.venue_id, Venue, Artist.image_link.label(artist_image_link)).filter_by(venue_id = Venue.id, artist_id = Artist.id).filter_by(venue_id = venue_id).filter(Show.start_time > todays_datetime ).all()
+  upcoming_shows = db.session.query(Show.start_time,Show.artist_id,Show.venue_id, Venue, Artist.image_link).filter_by(venue_id = Venue.id, artist_id = Artist.id).filter_by(venue_id = venue_id).filter(Show.start_time > todays_datetime).all()
 
   past_shows = db.session.query(Show.start_time,Show.artist_id,Show.venue_id, Venue, Artist).filter_by(venue_id = Venue.id, artist_id = Artist.id).filter_by(venue_id = venue_id).filter(Show.start_time < todays_datetime ).all()
 
